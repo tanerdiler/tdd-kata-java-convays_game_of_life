@@ -3,6 +3,7 @@ package jug.istanbul.convaysgame;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameStatistics {
+
     private AtomicInteger countOfReborn = new AtomicInteger();
     private AtomicInteger countOfDead = new AtomicInteger();
 

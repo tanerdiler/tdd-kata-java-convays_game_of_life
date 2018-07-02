@@ -2,7 +2,6 @@ package jug.istanbul.convaysgame;
 
 public class Cell {
 
-    private Board board;
     private final int row;
     private final int column;
     private final boolean alive;

@@ -13,8 +13,7 @@ public class Game
 
 	public static Game withBoard(Board board)
 	{
-		Game game = new Game(board);
-		return game;
+		return new Game(board);
 	}
 
 	public int getRowSize()
@@ -54,16 +53,11 @@ public class Game
 
 	public GameStatistics start(int iteration) {
 		GameStatistics stat = new GameStatistics();
-		int t = 0;
-		while(t<iteration)
+		int currentIteration = 0;
+		while(currentIteration<iteration)
 		{
 			List<Cell> cellsToKill = board.cellsWith(c->c.isAlive() && (board.isCellUnderPopulated(c) || board.isCellOverPopulated(c)));
 			List<Cell> cellsToReborn = board.cellsWith(c->c.isDead() && board.sizeOfPopulation(c) == 3);
-
-			if(iteration > 50)
-			{
-				System.out.println("Buyuk bir boardmus.");
-			}
 			
 			board.kill(cellsToKill);
 			stat.incCountOfDeadCell(cellsToKill.size());
@@ -71,7 +65,7 @@ public class Game
 			board.reborn(cellsToReborn);
 			stat.incCountOfRebornedCell(cellsToReborn.size());
 
-			t++;
+			currentIteration++;
 		}
 		return stat;
 	}
